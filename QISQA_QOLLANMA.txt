@@ -1,0 +1,55 @@
+═══════════════════════════════════════════════════════
+    KONSTOVAR LOYIHASINI ISHGA TUSHIRISH
+═══════════════════════════════════════════════════════
+
+📦 1. DOCKER O'RNATISH:
+   Windows: https://www.docker.com/products/docker-desktop
+   Mac: https://www.docker.com/products/docker-desktop
+   
+   O'rnatib, Docker Desktop dasturini oching!
+
+═══════════════════════════════════════════════════════
+
+🚀 2. LOYIHANI ISHGA TUSHIRISH:
+   
+   Terminal/PowerShell oching va yozing:
+   
+   cd [bu_papka_manzili]
+   docker-compose up -d
+   
+   Birinchi marta 5-10 daqiqa kutish kerak!
+
+═══════════════════════════════════════════════════════
+
+🌐 3. SAYTNI OCHISH:
+   
+   Brauzerda oching:
+   
+   Asosiy sayt:    http://localhost:8080
+   Admin panel:    http://localhost:8080/admin.html
+   PHPMyAdmin:     http://localhost:8081
+   
+   Admin login:    admin / admin123
+   Database:       root / root
+
+═══════════════════════════════════════════════════════
+
+⚙️ FOYDALI BUYRUQLAR:
+
+   docker ps                    - Holatni ko'rish
+   docker-compose down          - To'xtatish
+   docker-compose restart       - Qayta ishga tushirish
+   docker-compose logs -f       - Loglarni ko'rish
+
+═══════════════════════════════════════════════════════
+
+📖 BATAFSIL QOLLANMALAR:
+
+   USTOZ_UCHUN.md  - To'liq ko'rsatma
+   BOSHLASH.md     - Boshlang'ich qo'llanma
+   DOCKER.md       - Docker haqida
+   README.md       - Loyiha haqida
+
+═══════════════════════════════════════════════════════
+
+✅ TAYYOR! Sayt ishga tushadi!

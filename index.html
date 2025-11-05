@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konstovar - Dars Qurollari</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo    ">
+                    <h2><i class="fas fa-graduation-cap"></i> Konstovar</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link">Bosh sahifa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#products" class="nav-link">Mahsulotlar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">Biz haqimizda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Aloqa</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link auth-btn" id="login-btn">Kirish</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link auth-btn" id="register-btn">Ro'yxatdan o'tish</button>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin.html" class="nav-link admin-link">
+                            <i class="fas fa-cog"></i> Admin
+                        </a>
+                    </li>
+                </ul>
+                <div class="nav-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Dars Qurollari</h1>
+                <p>Maktab va ofis uchun barcha kerakli dars qurollarini eng arzon narxlarda toping</p>
+                <a href="#products" class="btn btn-primary">Mahsulotlarni ko'rish</a>
+            </div>
+                 <img src="img/constavar section.png" class="hero-icon" alt="img error">
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Bizning Mahsulotlar</h2>
+            
+            <!-- Search and Sort Section -->
+            <div class="search-sort-section">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Mahsulotlarni qidiring...">
+                </div>
+                <div class="sort-box">
+                    <select id="sort-select">
+                        <option value="default">Standart tartib</option>
+                        <option value="price-low">Narx: Pastdan yuqoriga</option>
+                        <option value="price-high">Narx: Yuqoridan pastga</option>
+                        <option value="name">Ism bo'yicha</option>
+                        <option value="popularity">Mashhurlik bo'yicha</option>
+                    </select>
+                </div>
+                <div class="price-filter" style="display:flex;align-items:center;gap:10px;">
+                    <span style="color:#666;font-size:0.95rem;">Narx:</span>
+                    <input type="number" id="price-min" placeholder="min" style="width:90px;padding:8px;border:2px solid #e0e0e0;border-radius:6px;">
+                    <span style="color:#999;">-</span>
+                    <input type="number" id="price-max" placeholder="max" style="width:90px;padding:8px;border:2px solid #e0e0e0;border-radius:6px;">
+                    <button id="price-apply" class="btn" style="padding:8px 14px;">Qo'llash</button>
+                </div>
+            </div>
+            
+            <div class="product-filters">
+                <button class="filter-btn active" data-filter="all">Barchasi</button>
+                <button class="filter-btn" data-filter="stationery">Yozuv qurollari</button>
+                <button class="filter-btn" data-filter="notebooks">Daftarlar</button>
+                <button class="filter-btn" data-filter="art">San'at qurollari</button>
+                <button class="filter-btn" data-filter="office">Ofis qurollari</button>
+            </div>
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Biz haqimizda</h2>
+                    <p>Konstovar - bu ta'lim sohasidagi eng ishonchli hamkoringiz. Biz 10 yildan ortiq tajribaga ega bo'lib, maktab va ofis uchun eng yaxshi sifatli dars qurollarini taqdim etamiz.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-shipping-fast"></i>
+                            <h3>Tez yetkazib berish</h3>
+                            <p>24 soat ichida yetkazib beramiz</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-medal"></i>
+                            <h3>Yuqori sifat</h3>
+                            <p>Faqat sertifikatlangan mahsulotlar</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-dollar-sign"></i>
+                            <h3>Arzon narxlar</h3>
+                            <p>Bozordagi eng arzon narxlarda</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <i class="fas fa-school"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h2>Yangiliklar haqida xabar oling</h2>
+                    <p>Yangi mahsulotlar va maxsus takliflar haqida birinchi bo'lib bilib oling</p>
+                </div>
+                <form class="newsletter-form" id="newsletter-form">
+                    <input type="email" placeholder="Email manzilingizni kiriting" required>
+                    <button type="submit" class="btn btn-primary">Obuna bo'lish</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Biz bilan bog'laning</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Telefon</h3>
+                            <p>+998 90 123 45 67</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>info@konstovar.uz</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Manzil</h3>
+                            <p>Toshkent shahar, Chilonzor tumani</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Ismingiz" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="tel" placeholder="Telefon raqam" required>
+                    <textarea placeholder="Xabar" rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary">Xabar yuborish</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="login-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Kirish</h3>
+                <button class="close-modal" id="close-login">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="modal-form" id="login-form">
+                <input type="tel" placeholder="Telefon raqam" required>
+                <button type="submit" class="btn btn-primary">Kirish</button>
+                <p class="modal-switch">
+                    Hisobingiz yo'qmi? 
+                    <a href="#" id="switch-to-register">Ro'yxatdan o'ting</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal-overlay" id="register-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Ro'yxatdan o'tish</h3>
+                <button class="close-modal" id="close-register">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="modal-form" id="register-form">
+                <input type="text" placeholder="Ism" required>
+                <input type="text" placeholder="Familiya" required>
+                <input type="tel" placeholder="Telefon raqam" required>
+                <button type="submit" class="btn btn-primary">Ro'yxatdan o'tish</button>
+                <p class="modal-switch">
+                    Allaqachon hisobingiz bormi? 
+                    <a href="#" id="switch-to-login">Kirish</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div class="modal-overlay" id="product-detail-modal">
+        <div class="modal product-modal">
+            <div class="modal-header">
+                <h3 id="modal-product-name">Mahsulot</h3>
+                <button class="close-modal" id="close-product">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="product-detail-content" id="product-detail-content">
+                <!-- Product details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart -->
+    <div class="cart-overlay" id="cart-overlay">
+        <div class="cart">
+            <div class="cart-header">
+                <h3>Savat</h3>
+                <button class="close-cart" id="close-cart">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="cart-items" id="cart-items">
+                <!-- Cart items will be loaded here -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <h4>Jami: <span id="cart-total">0</span> so'm</h4>
+                </div>
+                <button class="btn btn-primary" id="checkout">Buyurtma berish</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Button -->
+    <button class="cart-btn" id="cart-btn">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" id="cart-count">0</span>
+    </button>
+
+    <!-- Live Chat Button -->
+    <button class="chat-btn" id="chat-btn">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Live Chat Widget -->
+    <div class="chat-widget" id="chat-widget">
+        <div class="chat-header">
+            <h4>Yordam kerakmi?</h4>
+            <button class="close-chat" id="close-chat">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="chat-message bot-message">
+                <p>Salom! Sizga qanday yordam bera olaman?</p>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chat-input-field" placeholder="Xabaringizni yozing...">
+            <button id="send-message">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-graduation-cap"></i> Konstovar</h3>
+                    <p>Dars qurollarining eng ishonchli yetkazib beruvchisi</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Tez havolalar</h4>
+                    <ul>
+                        <li><a href="#home">Bosh sahifa</a></li>
+                        <li><a href="#products">Mahsulotlar</a></li>
+                        <li><a href="#about">Biz haqimizda</a></li>
+                        <li><a href="#contact">Aloqa</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Aloqa</h4>
+                    <p><i class="fas fa-phone"></i> +998 90 123 45 67</p>
+                    <p><i class="fas fa-envelope"></i> info@konstovar.uz</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Konstovar. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

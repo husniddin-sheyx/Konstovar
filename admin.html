@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Konstovar</title>
+    <link rel="stylesheet" href="admin-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Admin Login -->
+    <div class="admin-login" id="admin-login">
+        <div class="login-container">
+            <div class="login-header">
+                <h2><i class="fas fa-shield-alt"></i> Admin Panel</h2>
+                <p>Konstovar boshqaruv tizimi</p>
+            </div>
+            <form class="admin-login-form" id="admin-login-form">
+                <div class="form-group">
+                    <label for="admin-username" class="visually-hidden">Admin nomi</label>
+                    <div style="position:relative;">
+                        <i class="fas fa-user" style="position:absolute;left:15px;top:50%;transform:translateY(-50%);color:#666;z-index:1;"></i>
+                        <input type="text" id="admin-username" name="admin-username" placeholder="Admin nomi" required style="padding-left:45px;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="admin-password" class="visually-hidden">Parol</label>
+                    <div style="position:relative;">
+                        <i class="fas fa-lock" style="position:absolute;left:15px;top:50%;transform:translateY(-50%);color:#666;z-index:1;"></i>
+                        <input type="password" id="admin-password" name="admin-password" placeholder="Parol" required style="padding-left:45px;">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-sign-in-alt"></i> Kirish
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div class="admin-dashboard" id="admin-dashboard" style="display: none;">
+        <!-- Sidebar -->
+        <div class="admin-sidebar">
+            <div class="sidebar-header">
+                <h3><i class="fas fa-graduation-cap"></i> Konstovar</h3>
+                <p>Admin Panel</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#dashboard" class="nav-item active" data-section="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#products" class="nav-item" data-section="products">
+                    <i class="fas fa-box"></i>
+                    <span>Mahsulotlar</span>
+                </a>
+                <a href="#orders" class="nav-item" data-section="orders">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Buyurtmalar</span>
+                </a>
+                <a href="#users" class="nav-item" data-section="users">
+                    <i class="fas fa-users"></i>
+                    <span>Foydalanuvchilar</span>
+                </a>
+                <a href="#analytics" class="nav-item" data-section="analytics">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Analitika</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn btn-secondary" onclick="logoutAdmin()">
+                    <i class="fas fa-sign-out-alt"></i> Chiqish
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="admin-main">
+            <!-- Header -->
+            <header class="admin-header">
+                <div class="header-left">
+                    <button class="sidebar-toggle" id="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 id="page-title">Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div class="admin-user">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="admin-name">Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Section -->
+            <section class="admin-section active" id="dashboard-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="total-products">0</h3>
+                            <p>Jami mahsulotlar</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="total-orders">0</h3>
+                            <p>Jami buyurtmalar</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="total-users">0</h3>
+                            <p>Ro'yxatdan o'tganlar</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="total-revenue">0</h3>
+                            <p>Jami daromad</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-content">
+                    <div class="recent-orders">
+                        <h3>So'nggi buyurtmalar</h3>
+                        <div class="table-container">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Foydalanuvchi</th>
+                                        <th>Mahsulotlar</th>
+                                        <th>Jami</th>
+                                        <th>Holat</th>
+                                        <th>Sana</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recent-orders-table">
+                                    <!-- Orders will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Products Section -->
+            <section class="admin-section" id="products-section">
+                <div class="section-header">
+                    <h2>Mahsulotlar boshqaruvi</h2>
+                    <button class="btn btn-primary" onclick="showAddProductModal()">
+                        <i class="fas fa-plus"></i> Yangi mahsulot
+                    </button>
+                </div>
+
+                <div class="products-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Rasm</th>
+                                <th>Nomi</th>
+                                <th>Kategoriya</th>
+                                <th>Narx</th>
+                                <th>Chegirma</th>
+                                <th>Baholash</th>
+                                <th>Amallar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="products-table">
+                            <!-- Products will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Orders Section -->
+            <section class="admin-section" id="orders-section">
+                <div class="section-header">
+                    <h2>Buyurtmalar boshqaruvi</h2>
+                    <div class="filter-controls">
+                        <select id="order-status-filter">
+                            <option value="all">Barcha holatlar</option>
+                            <option value="pending">Kutilmoqda</option>
+                            <option value="processing">Jarayonda</option>
+                            <option value="completed">Yakunlangan</option>
+                            <option value="cancelled">Bekor qilingan</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="orders-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Foydalanuvchi</th>
+                                <th>Mahsulotlar</th>
+                                <th>Jami</th>
+                                <th>Holat</th>
+                                <th>Sana</th>
+                                <th>Amallar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-table">
+                            <!-- Orders will be loaded here by JS -->
+                            <!-- Namuna uchun bir qator -->
+                            <tr>
+                                <td>#1001</td>
+                                <td>Ali Valiyev</td>
+                                <td>2 mahsulot</td>
+                                <td>120 000 so'm</td>
+                                <td><span class="status-badge status-pending">Kutilmoqda</span></td>
+                                <td>22.09.2025</td>
+                                <td>
+                                    <div class="action-buttons" style="display:flex;gap:8px;align-items:center;">
+                                        <select class="order-status-select" style="padding:8px 18px;border-radius:20px;border:1px solid #d1d5db;background:#f8f9fa;font-weight:600;transition:box-shadow 0.2s;box-shadow:0 2px 8px rgba(52,152,219,0.08);">
+                                            <option value="pending">Kutilmoqda</option>
+                                            <option value="processing">Jarayonda</option>
+                                            <option value="completed">Yakunlangan</option>
+                                            <option value="cancelled">Bekor qilingan</option>
+                                        </select>
+                                        <button class="btn btn-sm btn-danger" title="O'chirish" style="display:flex;align-items:center;gap:6px;border-radius:20px;padding:8px 16px;transition:background 0.2s;">
+                                            <i class="fas fa-trash" style="font-size:1.1em;"></i>
+                                            <span style="font-weight:600;">O'chirish</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Users Section -->
+            <section class="admin-section" id="users-section">
+                <div class="section-header">
+                    <h2>Foydalanuvchilar boshqaruvi</h2>
+                </div>
+
+                <div class="users-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Ism</th>
+                                <th>Familiya</th>
+                                <th>Telefon</th>
+                                <th>Ro'yxatdan o'tgan sana</th>
+                                <th>Amallar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-table">
+                            <!-- Users will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section class="admin-section" id="analytics-section">
+                <h2 class="section-title">Statistika</h2>
+                <div id="analytics-summary" class="analytics-summary"></div>
+                <div id="popular-products" class="popular-products-grid"></div>
+            </section>
+
+    <!-- Add/Edit Product Modal -->
+    <div class="modal-overlay" id="product-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modal-title">Yangi mahsulot qo'shish</h3>
+                <button class="close-modal" onclick="hideProductModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="modal-form" id="product-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Mahsulot nomi</label>
+                        <input type="text" id="product-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Kategoriya</label>
+                        <select id="product-category" required>
+                            <option value="stationery">Yozuv qurollari</option>
+                            <option value="notebooks">Daftarlar</option>
+                            <option value="art">San'at qurollari</option>
+                            <option value="office">Ofis qurollari</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Tavsif</label>
+                    <textarea id="product-description" rows="3" required></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Narx (so'm)</label>
+                        <input type="number" id="product-price" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Chegirma (%)</label>
+                        <input type="number" id="product-discount" min="0" max="100" value="0">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Baholash</label>
+                        <input type="number" id="product-rating" min="0" max="5" step="0.1" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Sharhlar soni</label>
+                        <input type="number" id="product-reviews" min="0" value="0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Rasm URL (ixtiyoriy)</label>
+                    <input type="text" id="product-imageUrl" placeholder="https://... yoki img/qalam.jpg">
+                </div>
+                <div class="form-group">
+                    <label>Ikonka (FontAwesome class)</label>
+                    <input type="text" id="product-icon" placeholder="fas fa-pen" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="hideProductModal()">Bekor qilish</button>
+                    <button type="submit" class="btn btn-primary">Saqlash</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin-script.js"></script>
+</body>
+</html>
