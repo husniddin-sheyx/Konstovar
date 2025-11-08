@@ -4,8 +4,8 @@ FROM php:8.1-apache
 # Kerakli PHP extensionlarni o'rnatish
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-# Apache mod_rewrite yoqish
-RUN a2enmod rewrite
+# Apache modullarni yoqish
+RUN a2enmod rewrite headers
 
 # Ishchi katalogni belgilash
 WORKDIR /var/www/html

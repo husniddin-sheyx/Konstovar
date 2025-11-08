@@ -264,7 +264,7 @@ function loadOrdersTable() {
     const tbody = document.getElementById('orders-table');
     
     // Backend'dan buyurtmalarni olish
-    fetch('orders.php')
+    fetch('/api/orders.php')
         .then(response => response.json())
         .then(ordersData => {
             orders = ordersData;

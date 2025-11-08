@@ -1,16 +1,6 @@
-RewriteEngine On
-RewriteBase /api/
-
-# CORS headers
-Header set Access-Control-Allow-Origin "*"
-Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
-Header set Access-Control-Allow-Headers "Content-Type, Authorization"
-
-# Handle preflight requests
-RewriteCond %{REQUEST_METHOD} OPTIONS
-RewriteRule ^(.*)$ $1 [R=200,L]
-
-# Redirect all requests to index.php if file doesn't exist
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php [QSA,L]
+# CORS headers uchun PHP fayllarida qo'shamiz
+# Apache rewrite rules
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /api/
+</IfModule>
