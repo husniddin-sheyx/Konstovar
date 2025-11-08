@@ -2,8 +2,8 @@
 // Database konfiguratsiyasi
 // Docker uchun
 $host = getenv('DB_HOST') ?: 'db';
-$user = getenv('DB_USER') ?: 'root';
-$pass = getenv('DB_PASS') ?: 'root';
+$user = getenv('DB_USER') ?: 'konstovar_user';
+$pass = getenv('DB_PASSWORD') ?: 'konstovar_pass';
 $db = getenv('DB_NAME') ?: 'konstovar';
 
 // Localhost uchun (XAMPP)
