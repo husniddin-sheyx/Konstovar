@@ -1,274 +1,245 @@
-# Konstovar - Dars Qurollari Onlayn Do'koni
+# 🛒 Konstovar - Kantselyariya Mahsulotlari Do'koni
 
-## Loyiha haqida
-Konstovar - bu maktab va ofis uchun dars qurollarini sotish uchun mo'ljallangan zamonaviy onlayn do'kon platformasi.
+Modern va professional kantselyariya mahsulotlari onlayn do'koni. Backend va Frontend alohida ajratilgan, Docker bilan ishga tushirishga tayyor.
 
-## Texnologiyalar
-- **Frontend**: HTML5, CSS3, JavaScript (Vanilla)
-- **Backend**: PHP 7.4+
-- **Database**: MySQL 5.7+
-- **Icons**: Font Awesome 6.0
+## 📁 Loyiha Strukturasi
 
-## Loyihaning asosiy funksiyalari
-✅ Mahsulotlarni ko'rish va qidirish
-✅ Kategoriyalar bo'yicha filtrlash
-✅ Narx oralig'i bo'yicha filtrlash
-✅ Savatga mahsulot qo'shish
-✅ Foydalanuvchi ro'yxatdan o'tishi va kirishi
-✅ Buyurtma berish (faqat ro'yxatdan o'tganlar uchun)
-✅ Admin panel (mahsulotlar, buyurtmalar, foydalanuvchilarni boshqarish)
-✅ Jonli chat
-✅ Sevimlilar va taqqoslash
+```
+konstovar/
+├── backend/              # PHP API (Backend)
+│   ├── products.php      # Mahsulotlar API
+│   ├── orders.php        # Buyurtmalar API
+│   ├── usres.php         # Foydalanuvchilar API
+│   ├── analytics.php     # Analitika API
+│   ├── db-config.php     # Database konfiguratsiyasi
+│   ├── database.sql      # Database strukturasi
+│   └── .htaccess         # API routing
+│
+├── frontend/             # HTML/CSS/JS (Frontend)
+│   ├── index.html        # Asosiy sahifa
+│   ├── admin.html        # Admin panel
+│   ├── script.js         # Frontend logika
+│   ├── admin-script.js   # Admin logika
+│   ├── styles.css        # Asosiy stillar
+│   ├── admin-styles.css  # Admin stillar
+│   └── img/              # Rasmlar
+│
+├── docker/               # Docker konfiguratsiya
+│   ├── Dockerfile        # PHP image
+│   ├── docker-compose.yml # Xizmatlar
+│   └── .dockerignore     # Ignore fayllar
+│
+├── docs/                 # Hujjatlar
+│   ├── README.md         # Asosiy qo'llanma
+│   ├── DOCKER.md         # Docker haqida
+│   ├── BOSHLASH.md       # Boshlang'ich qo'llanma
+│   ├── USTOZ_UCHUN.md    # O'qituvchilar uchun
+│   └── QISQA_QOLLANMA.txt # Qisqa ko'rsatma
+│
+├── docker-compose.yml    # Docker Compose (root)
+├── .env.example          # Environment o'zgaruvchilar namunasi
+├── .gitignore            # Git ignore
+└── Makefile              # Qulaylik buyruqlari
+```
 
-## O'rnatish
+## 🚀 Tez Boshlash
 
-### Usul 1: Docker bilan (Tavsiya etiladi) 🐳
-
-> 📘 **Batafsil qo'llanma**: [DOCKER.md](DOCKER.md) faylida Docker haqida to'liq ma'lumot bor!
-
-**Afzalliklari:**
-- Tez va oson
-- Har qanday OS da ishlaydi (Windows, Mac, Linux)
-- XAMPP o'rnatish shart emas
-- Production uchun tayyor
-
-**Talablar:**
-- Docker Desktop o'rnatilgan bo'lishi kerak
-- Download: https://www.docker.com/products/docker-desktop
-
-**Ishga tushirish:**
+### **1. Docker bilan (Tavsiya etiladi)**
 
 ```bash
-# 1. Loyiha papkasiga kiring
-cd konstovar
+# Repository'ni clone qiling
+git clone https://github.com/husniddin-sheyx/Konstovar.git
+cd Konstovar
 
-# 2. Docker containerlarni ishga tushiring
+# Docker containerlarni ishga tushiring
 docker-compose up -d
 
-# 3. Tayyir! Saytni ochilg'aning:
+# Brauzerda oching
 # Asosiy sayt: http://localhost:8080
 # Admin panel: http://localhost:8080/admin.html
 # PHPMyAdmin: http://localhost:8081
 ```
 
-**Docker commandalar:**
+### **2. XAMPP bilan (Alternativ)**
+
+1. XAMPP o'rnating va ishga tushiring
+2. Loyihani `htdocs` papkasiga ko'chiring
+3. `backend/database.sql` ni import qiling
+4. `backend/db-config.php` da database ma'lumotlarini sozlang
+5. Brauzerda `http://localhost/konstovar/frontend/` ni oching
+
+## 🔧 Texnologiyalar
+
+### Backend:
+- **PHP 8.1** - Server-side dasturlash
+- **MySQL 8.0** - Database
+- **REST API** - API arxitekturasi
+
+### Frontend:
+- **HTML5** - Markup
+- **CSS3** - Styling (Flexbox, Grid, Animations)
+- **JavaScript (ES6+)** - Client-side logika
+- **Fetch API** - Backend bilan aloqa
+
+### DevOps:
+- **Docker** - Containerization
+- **Docker Compose** - Multi-container orchestration
+- **Apache** - Web server
+- **PHPMyAdmin** - Database boshqaruvi
+
+## 🎯 Asosiy Funksiyalar
+
+### Foydalanuvchilar uchun:
+- ✅ Mahsulotlarni ko'rish va qidirish
+- ✅ Kategoriya bo'yicha filtrlash
+- ✅ Savatga qo'shish
+- ✅ Ro'yxatdan o'tish (majburiy)
+- ✅ Buyurtma berish
+- ✅ Sevimlilar va taqqoslash
+- ✅ Responsive dizayn
+
+### Admin panel:
+- ✅ Mahsulotlar boshqaruvi (CRUD)
+- ✅ Buyurtmalar ko'rish va status o'zgartirish
+- ✅ Foydalanuvchilar ro'yxati
+- ✅ Analitika va statistika
+- ✅ Dashboard
+
+## 🌐 API Endpoints
+
+Barcha API so'rovlari `/api/` prefiksi bilan boshlanadi:
+
+### Mahsulotlar:
+- `GET /api/products.php` - Barcha mahsulotlar
+- `POST /api/products.php` - Yangi mahsulot qo'shish
+- `DELETE /api/products.php?id={id}` - Mahsulotni o'chirish
+
+### Buyurtmalar:
+- `GET /api/orders.php` - Barcha buyurtmalar
+- `POST /api/orders.php` - Yangi buyurtma
+- `DELETE /api/orders.php?id={id}` - Buyurtmani o'chirish
+
+### Foydalanuvchilar:
+- `GET /api/usres.php` - Barcha foydalanuvchilar
+- `POST /api/usres.php` - Yangi foydalanuvchi
+- `DELETE /api/usres.php?id={id}` - Foydalanuvchini o'chirish
+
+### Analitika:
+- `GET /api/analytics.php` - Statistika
+
+## 🔐 Admin Panel
+
+**URL:** `http://localhost:8080/admin.html`
+
+**Login ma'lumotlari:**
+- Username: `admin`
+- Password: `admin123`
+
+## 🗄️ Database
+
+**PHPMyAdmin:** `http://localhost:8081`
+
+**Kirish ma'lumotlari:**
+- Server: `db`
+- Username: `root`
+- Password: `root`
+- Database: `konstovar`
+
+### Database Strukturasi:
+
+```sql
+-- Foydalanuvchilar
+users (id, first_name, last_name, phone, created_at)
+
+-- Mahsulotlar
+products (id, name, category, description, price, discount, rating, reviews, icon, imageUrl)
+
+-- Buyurtmalar
+orders (id, userName, items, total, status, date)
+```
+
+## 📦 Docker Buyruqlar
+
 ```bash
-# Containerlarni to'xtatish
+# Ishga tushirish
+docker-compose up -d
+
+# To'xtatish
 docker-compose down
+
+# Qayta ishga tushirish
+docker-compose restart
 
 # Loglarni ko'rish
 docker-compose logs -f
 
-# Database qayta yaratish
+# Holatni tekshirish
+docker ps
+
+# Containerlarni tozalash
 docker-compose down -v
-docker-compose up -d
+```
 
-# Containerlarni restart qilish
+## 🔄 Kelajakda O'zgarishlar
+
+```bash
+# O'zgarishlarni saqlash
+git add .
+git commit -m "O'zgarishlar tavsifi"
+git push
+
+# Yangilanishlarni olish
+git pull
+```
+
+## 🐛 Muammolarni Hal Qilish
+
+### Port band bo'lsa:
+```bash
+# Portni tekshirish
+netstat -ano | findstr :8080
+
+# docker-compose.yml da portni o'zgartiring
+ports:
+  - "8090:80"  # 8080 o'rniga 8090
+```
+
+### Database ulanmasa:
+```bash
+# Containerlarni qayta ishga tushiring
 docker-compose restart
-```
 
----
-
-### Usul 2: XAMPP/WAMP/MAMP o'rnatish (An'anaviy usul)
-- XAMPP yuklab oling: https://www.apachefriends.org/
-- Apache va MySQL xizmatlarini ishga tushiring
-
-### 2. Database yaratish
-1. PHPMyAdmin ochilsin: http://localhost/phpmyadmin
-2. Yangi database yarating: `konstovar`
-3. `database.sql` faylini import qiling:
-   - PHPMyAdmin -> konstovar -> Import -> `database.sql` ni tanlang -> Go
-
-### 3. Loyihani joylashtirish
-1. Loyiha fayllarini XAMPP/htdocs papkasiga ko'chiring:
-   ```
-   C:\xampp\htdocs\konstovar\
-   ```
-
-### 4. Database ulanishini sozlash
-Quyidagi fayllarda database ulanish ma'lumotlarini tekshiring:
-- `products.php`
-- `orders.php`
-- `usres.php` (users)
-- `analytics.php`
-
-```php
-$host = 'localhost';
-$user = 'root';        // MySQL foydalanuvchi nomi
-$pass = '';            // MySQL paroli
-$db = 'konstovar';     // Database nomi
-```
-
-### 5. Saytni ochish
-Brauzerda quyidagi manzilga kiring:
-```
-http://localhost/konstovar/index.html
-```
-
-Admin panel uchun:
-```
-http://localhost/konstovar/admin.html
-```
-
-## Fayl strukturasi
-```
-konstovar/
-├── index.html          # Asosiy sahifa
-├── admin.html          # Admin panel
-├── script.js           # Frontend JavaScript
-├── admin-script.js     # Admin JavaScript
-├── styles.css          # Frontend CSS
-├── admin-styles.css    # Admin CSS
-├── products.php        # Mahsulotlar API
-├── orders.php          # Buyurtmalar API
-├── usres.php           # Foydalanuvchilar API
-├── analytics.php       # Statistika API
-├── db-config.php       # Database ulanish konfiguratsiyasi
-├── database.sql        # Database struktura
-├── Dockerfile          # Docker image konfiguratsiyasi
-├── docker-compose.yml  # Docker Compose konfiguratsiyasi
-├── .dockerignore       # Docker ignore fayli
-├── .env.example        # Environment variables namunasi
-├── .gitignore          # Git ignore fayli
-├── Makefile            # Docker qulaylik commandlari
-├── README.md           # Bu fayl
-├── DOCKER.md           # Docker batafsil qo'llanma
-└── img/                # Rasmlar papkasi
-```
-
-## API Endpoints
-
-### Mahsulotlar (products.php)
-- `GET` - Barcha mahsulotlarni olish
-- `POST` - Yangi mahsulot qo'shish yoki tahrirlash
-- `DELETE` - Mahsulotni o'chirish
-
-### Buyurtmalar (orders.php)
-- `GET` - Barcha buyurtmalarni olish
-- `POST` - Yangi buyurtma qo'shish yoki tahrirlash
-- `DELETE` - Buyurtmani o'chirish
-
-### Foydalanuvchilar (usres.php)
-- `GET` - Barcha foydalanuvchilarni olish
-- `POST` - Yangi foydalanuvchi qo'shish yoki tahrirlash
-- `DELETE` - Foydalanuvchini o'chirish
-
-### Statistika (analytics.php)
-- `GET` - Umumiy statistika ma'lumotlarini olish
-
-## Asosiy funksiyalar
-
-### Frontend
-1. **Mahsulotlar sahifasi** - Barcha mahsulotlarni ko'rsatish
-2. **Qidiruv** - Mahsulotlarni nom yoki tavsif bo'yicha qidirish
-3. **Filtrlash** - Kategoriya va narx bo'yicha filtrlash
-4. **Savat** - Mahsulotlarni savatga qo'shish va boshqarish
-5. **Autentifikatsiya** - Ro'yxatdan o'tish va kirish
-6. **Buyurtma berish** - Faqat tizimga kirganlar uchun
-
-### Admin Panel
-1. **Mahsulotlar boshqaruvi** - Qo'shish, tahrirlash, o'chirish
-2. **Buyurtmalar boshqaruvi** - Ko'rish, tahrirlash, o'chirish
-3. **Foydalanuvchilar boshqaruvi** - Ko'rish, tahrirlash, o'chirish
-4. **Statistika** - Umumiy ma'lumotlar va grafika
-
-## Xavfsizlik
-⚠️ **Muhim**: Ushbu loyiha ta'lim maqsadida yaratilgan. Real ishlab chiqarish uchun quyidagilarni qo'shing:
-- Parollarni xeshlash (bcrypt/password_hash)
-- SQL Injection himoyasi (prepared statements ishlatilgan)
-- XSS himoyasi
-- CSRF token
-- HTTPS ulanish
-- Session boshqaruvi
-
-## Muammolarni hal qilish
-
-### Database ulanish xatosi
-- MySQL xizmati ishga tushganligini tekshiring
-- Database ulanish ma'lumotlarini to'g'ri kiritganligini tekshiring
-- `konstovar` database yaratilganligini tekshiring
-
-### 404 xato
-- Fayl yo'llari to'g'riligini tekshiring
-- XAMPP htdocs papkasiga to'g'ri joylashtirilganligini tekshiring
-
-### Mahsulotlar ko'rinmayapti
-- `database.sql` to'liq import qilinganligini tekshiring
-- Browser console'da xatolik borligini tekshiring (F12)
-
-## Production Deployment 🚀
-
-### Docker bilan deploy qilish
-
-**1. VPS/Cloud Server (DigitalOcean, AWS, Azure, etc.)**
-
-```bash
-# Server'ga ulaning
-ssh user@your-server-ip
-
-# Git orqali loyihani klonlash
-git clone https://github.com/yourname/konstovar.git
-cd konstovar
-
-# Docker va Docker Compose o'rnatish (agar yo'q bo'lsa)
-curl -fsSL https://get.docker.com -o get-docker.sh
-sh get-docker.sh
-
-# Production uchun docker-compose ishga tushirish
+# Yoki to'liq qayta yarating
+docker-compose down
 docker-compose up -d
-
-# NGINX reverse proxy sozlash (ixtiyoriy, HTTPS uchun)
-# Let's Encrypt SSL sertifikati olish
 ```
 
-**2. Database backup**
+### API ishlamasa:
+- Brauzer console'ni tekshiring (F12)
+- API yo'llari `/api/` bilan boshlanganligini tekshiring
+- Backend containerning loglarini ko'ring: `docker-compose logs backend`
 
-```bash
-# Backup olish
-docker exec konstovar_db mysqldump -u root -proot konstovar > backup.sql
+## 📚 Qo'shimcha Hujjatlar
 
-# Backup'ni qayta yuklash
-docker exec -i konstovar_db mysql -u root -proot konstovar < backup.sql
-```
+- [DOCKER.md](docs/DOCKER.md) - Docker haqida batafsil
+- [BOSHLASH.md](docs/BOSHLASH.md) - Boshlang'ichlar uchun
+- [USTOZ_UCHUN.md](docs/USTOZ_UCHUN.md) - O'qituvchilar uchun
+- [QISQA_QOLLANMA.txt](docs/QISQA_QOLLANMA.txt) - Qisqa ko'rsatma
 
-**3. Production uchun muhim sozlamalar:**
+## 👨‍💻 Muallif
 
-`db-config.php` da:
-```php
-// Production uchun qattiq parollar qo'ying
-$pass = 'qattiq_parol_123!@#';
-```
+**Husniddin Sheyx**
+- GitHub: [@husniddin-sheyx](https://github.com/husniddin-sheyx)
+- Repository: [Konstovar](https://github.com/husniddin-sheyx/Konstovar)
 
-`docker-compose.yml` da:
-```yaml
-environment:
-  MYSQL_ROOT_PASSWORD: qattiq_parol_123
-  MYSQL_PASSWORD: qattiq_parol_456
-```
+## 📄 Litsenziya
 
-### Hostingga deploy qilish (cPanel/Shared Hosting)
+Bu loyiha MIT litsenziyasi ostida tarqatiladi.
 
-1. **Fayllarga ZIP yasang** va hosting'ga yuklang
-2. **Database yarating** cPanel -> MySQL Databases
-3. **database.sql import qiling** phpMyAdmin orqali
-4. **db-config.php sozlang** hosting database ma'lumotlari bilan
-5. **Tayyor!** your-domain.com ga kiring
+## 🎉 Minnatdorchilik
+
+Docker, PHP, MySQL va boshqa open-source texnologiyalar jamoasiga rahmat!
 
 ---
 
-## Kelajakdagi yangilanishlar
-- [ ] To'lov tizimi integratsiyasi
-- [ ] Email bildirinomalari
-- [ ] Mahsulot rasmlarini yuklash
-- [ ] Mahsulot sharhlar tizimi
-- [ ] Maxsus chegirmalar va kuponlar
-- [ ] Mobil ilova
-
-## Muallif
-Husniddin
-
-## Litsenziya
-MIT License
-
----
-**Eslatma**: Agar qandaydir muammo yuzaga kelsa, browser console (F12) va PHP error log'larini tekshiring.
+**Saytni ishga tushiring va sinab ko'ring!** 🚀

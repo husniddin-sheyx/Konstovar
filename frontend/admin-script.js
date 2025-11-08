@@ -156,9 +156,9 @@ function toggleSidebar() {
 function loadDashboardData() {
     // Backend'dan ma'lumotlarni olish
     Promise.all([
-        fetch('products.php').then(r => r.json()),
-        fetch('orders.php').then(r => r.json()),
-        fetch('usres.php').then(r => r.json())
+        fetch('/api/products.php').then(r => r.json()),
+        fetch('/api/orders.php').then(r => r.json()),
+        fetch('/api/usres.php').then(r => r.json())
     ]).then(([productsData, ordersData, usersData]) => {
         products = productsData;
         orders = ordersData;
@@ -229,7 +229,7 @@ function loadRecentOrders() {
 // Load products table
 function loadProductsTable() {
     const tbody = document.getElementById('products-table');
-    fetch('products.php')
+    fetch('/api/products.php')
         .then(response => response.json())
         .then(products => {
             tbody.innerHTML = products.map(product => `
@@ -344,7 +344,7 @@ function renderUsersTable() {
 function loadAnalytics() {
     // Oylik savdo charti joyida qoladi (agar chart.js ishlatilsa)
     // Mashhur mahsulotlarni chiqarish
-    fetch('products.php')
+    fetch('/api/products.php')
         .then(response => response.json())
         .then(products => {
             // Eng mashhur 6 ta mahsulot (baho, sharh, sotuv bo'yicha)
@@ -374,7 +374,7 @@ function showAddProductModal() {
 
 function editProduct(productId) {
     // Fetch product from backend
-    fetch('products.php')
+    fetch('/api/products.php')
         .then(response => response.json())
         .then(products => {
             const product = products.find(p => p.id == productId);
@@ -399,7 +399,7 @@ function editProduct(productId) {
 function deleteProduct(productId) {
     if (confirm('Bu mahsulotni o\'chirishni xohlaysizmi?')) {
         showLoading('Mahsulot o\'chirilmoqda...');
-        fetch('products.php', {
+        fetch('/api/products.php', {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: `id=${productId}`
@@ -435,7 +435,7 @@ function handleProductSubmit(e) {
     if (productId) {
         formData.append('id', productId);
     }
-    fetch('products.php', {
+    fetch('/api/products.php', {
         method: 'POST',
         body: formData
     })
@@ -602,7 +602,7 @@ function logoutAdmin() {
 
 // Buyurtmalarni olish
 function fetchOrders() {
-    fetch('orders.php')
+    fetch('/api/orders.php')
         .then(response => response.json())
         .then(data => {
             orders = data;
@@ -612,7 +612,7 @@ function fetchOrders() {
 
 // Buyurtma qo'shish
 function addOrder(order) {
-    fetch('orders.php', {
+    fetch('/api/orders.php', {
         method: 'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body: new URLSearchParams(order)
@@ -625,7 +625,7 @@ function addOrder(order) {
 
 // Buyurtmani tahrirlash
 function editOrder(id, status) {
-    fetch('orders.php', {
+    fetch('/api/orders.php', {
         method: 'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body: new URLSearchParams({edit: 1, id, status})
@@ -638,7 +638,7 @@ function editOrder(id, status) {
 
 // Buyurtmani o'chirish
 function deleteOrder(id) {
-    fetch('orders.php', {
+    fetch('/api/orders.php', {
         method: 'DELETE',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body: new URLSearchParams({id})
@@ -651,7 +651,7 @@ function deleteOrder(id) {
 
 // Foydalanuvchilarni olish
 function fetchUsers() {
-    fetch('usres.php')
+    fetch('/api/usres.php')
         .then(response => response.json())
         .then(data => {
             users = data;
@@ -661,7 +661,7 @@ function fetchUsers() {
 
 // Foydalanuvchi qo'shish
 function addUser(user) {
-    fetch('usres.php', {
+    fetch('/api/usres.php', {
         method: 'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body: new URLSearchParams(user)
@@ -674,7 +674,7 @@ function addUser(user) {
 
 // Foydalanuvchini tahrirlash
 function editUser(id, first_name, last_name, phone) {
-    fetch('usres.php', {
+    fetch('/api/usres.php', {
         method: 'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body: new URLSearchParams({edit: 1, id, first_name, last_name, phone})
@@ -687,7 +687,7 @@ function editUser(id, first_name, last_name, phone) {
 
 // Foydalanuvchini o'chirish
 function deleteUser(id) {
-    fetch('usres.php', {
+    fetch('/api/usres.php', {
         method: 'DELETE',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body: new URLSearchParams({id})
@@ -699,7 +699,7 @@ function deleteUser(id) {
 }
 
 function fetchAnalytics() {
-    fetch('analytics.php')
+    fetch('/api/analytics.php')
         .then(response => response.json())
         .then(data => {
             // Statistikalarni ekranga chiqarish uchun

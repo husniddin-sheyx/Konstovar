@@ -550,7 +550,7 @@ function register(userData) {
     localStorage.setItem('currentUser', JSON.stringify(newUser));
     
     // Backend'ga foydalanuvchi yuborish
-    fetch('usres.php', {
+    fetch('/api/usres.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({
@@ -842,7 +842,7 @@ function setupEventListeners() {
         localStorage.setItem('orders', JSON.stringify(orders));
         
         // Backend'ga buyurtma yuborish
-        fetch('orders.php', {
+        fetch('/api/orders.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams({

@@ -1,27 +1,24 @@
 services:
-  # Backend - PHP API
-  backend:
-    build: ./docker
-    container_name: konstovar_backend
+  # PHP va Apache xizmati
+  web:
+    build: .
+    container_name: konstovar_web
     ports:
       - "8080:80"
     volumes:
-      - ./backend:/var/www/html/api
-      - ./frontend:/var/www/html
+      - .:/var/www/html
     depends_on:
       - db
-    environment:
-      - DB_HOST=db
-      - DB_NAME=konstovar
-      - DB_USER=konstovar_user
-      - DB_PASSWORD=konstovar_pass
     networks:
       - konstovar_network
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html
 
-  # MySQL Database
+  # MySQL database xizmati
   db:
     image: mysql:8.0
     container_name: konstovar_db
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: konstovar
@@ -31,20 +28,21 @@ services:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
-      - ./backend/database.sql:/docker-entrypoint-initdb.d/database.sql
+      - ./database.sql:/docker-entrypoint-initdb.d/database.sql
     networks:
       - konstovar_network
 
-  # PHPMyAdmin
+  # PHPMyAdmin (ixtiyoriy)
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: konstovar_phpmyadmin
-    environment:
-      PMA_HOST: db
-      PMA_PORT: 3306
-      MYSQL_ROOT_PASSWORD: root
+    restart: always
     ports:
       - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root
     depends_on:
       - db
     networks:
